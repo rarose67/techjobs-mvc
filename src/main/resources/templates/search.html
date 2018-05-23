@@ -45,7 +45,7 @@
             <h3 th:text="'Position #' + ${idx.count} + ':'"></h3>
             <table class="job-listing">
                 <tr th:each="row : ${job}">
-                    <strong><td th:text="${row.key}"></td></strong>
+                    <strong><td th:text="${#strings.capitalizeWords(row.key)}"></td></strong>
                     <td th:text="${row.value}"></td>
                 </tr>
             </table>
