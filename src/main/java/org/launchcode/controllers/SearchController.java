@@ -18,7 +18,6 @@ public class SearchController extends TechJobsController {
 
     @RequestMapping(value = "")
     public String search(Model model) {
-        model.addAttribute("columns", ListController.columnChoices);
         model.addAttribute("choice", "all");
         return "search";
     }
@@ -48,11 +47,10 @@ public class SearchController extends TechJobsController {
                 model.addAttribute("heading", "All Jobs");
             }
             else {
-                model.addAttribute("heading", "Jobs with " + searchTerm + " in the " + ListController.columnChoices.get(searchType) + " field");
+                model.addAttribute("heading", "Jobs with " + searchTerm + " in the " + TechJobsController.getColumnChoices().get(searchType) + " field");
             }
         }
 
-        model.addAttribute("columns", ListController.columnChoices);
         model.addAttribute("choice", searchType);
         model.addAttribute("jobs", jobs);
 
