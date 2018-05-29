@@ -37,15 +37,21 @@
     <hr />
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
+    <h1 th:text="${#strings.capitalizeWords(heading)}"></h1>
     <div th:fragment="results" th:if="${jobs} and ${jobs.size()}">
-        <h1 th:text="${#strings.capitalizeWords(heading)}"></h1>
+
+        <!--  Display the number results returned by the search-->
         <strong><h2 th:text="${jobs.size()} + ' result(s)'"></h2></strong>
 
         <div th:each="job, idx : ${jobs}">
+            <!--  Display the counter so the user knows which result each entry is. -->
             <h3 th:text="'Position #' + ${idx.count} + ':'"></h3>
             <table class="job-listing">
                 <tr th:each="row : ${job}">
+                    <!--  Capitalize the words in the field name-->
                     <strong><td th:text="${#strings.capitalizeWords(row.key)}"></td></strong>
+                    <!--  Turn every field except for the name field into a link
+                          to display all the jobs with the same value in the field. -->
                     <td th:if="${row.key != 'name'}">
                         <a th:href="@{/list/jobs(column=${row.key},value=${row.value})}" th:text="${row.value}"></a>
                     </td>
@@ -54,6 +60,8 @@
             </table>
         </div>
     </div>
+
+    <p th:unless="${jobs} and ${jobs.size()}"><strong>No results found.</strong></p>
 
 </div>
 

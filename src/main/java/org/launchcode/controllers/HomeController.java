@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController extends TechJobsController {
 
+    /**
+     * Displays the home page.
+     *
+     * @return The name of the view.
+     */
     @RequestMapping(value = "")
     public String index() {
 

@@ -16,13 +16,24 @@ import java.util.HashMap;
 @RequestMapping(value = "list")
 public class ListController extends TechJobsController {
 
-
+    /**
+     * Displays a view that contains the list of fields which jobs can be categorized by.
+     *
+     * @return The name of the view.
+     */
     @RequestMapping(value = "")
     public String list() {
 
         return "list";
     }
 
+    /**
+     * Displays the values in a given column, or a list of job if the column field is 'all'.
+     *
+     * @param model   Model used for passing data to the form.
+     * @param column  The column whose values are to be listed.
+     * @return The name of the view.
+     */
     @RequestMapping(value = "values")
     public String listColumnValues(Model model, @RequestParam String column) {
 
@@ -41,6 +52,14 @@ public class ListController extends TechJobsController {
 
     }
 
+    /**
+     * Displays the job(s) matching a given value in a given column.
+     *
+     * @param model   Model used for passing data to the form.
+     * @param column  The column containing value
+     * @param value   The value to match against the list of jobs.
+     * @return The name of the view.
+     */
     @RequestMapping(value = "jobs")
     public String listJobsByColumnAndValue(Model model,
             @RequestParam String column, @RequestParam String value) {
